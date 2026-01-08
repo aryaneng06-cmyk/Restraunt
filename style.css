@@ -1,0 +1,1361 @@
+/* 
+    WHAT IS THIS FILE?
+    This is the CSS (Cascading Style Sheets) file.
+    CSS controls how our webpage LOOKS - colors, fonts, spacing, layout, etc.
+    
+    Think of it like:
+    - HTML = the structure (skeleton) of a house
+    - CSS = the paint, furniture, and decorations
+    
+    BASIC CSS SYNTAX:
+    selector {
+        property: value;
+    }
+    
+    Example:
+    h1 {
+        color: blue;        (makes all h1 headings blue)
+        font-size: 24px;    (makes text 24 pixels tall)
+    }
+*/
+
+/* 
+    ========================================
+    PART 1: RESET & BASE STYLES
+    ========================================
+    Reset browser default styles so our page looks consistent
+    across all browsers (Chrome, Firefox, Safari, etc.)
+*/
+
+/* 
+    UNIVERSAL SELECTOR (*)
+    This applies to EVERY element on the page.
+    We're removing default margins and padding (space around elements).
+*/
+* {
+    /* Remove default margin (outer space) */
+    margin: 0;
+    /* Remove default padding (inner space) */
+    padding: 0;
+    /* 
+        box-sizing: border-box
+        This makes width calculations include padding and borders.
+        Example: If you set width to 100px, the total will be 100px
+        including padding and border, not 100px + padding + border.
+    */
+    box-sizing: border-box;
+}
+
+/* 
+    HTML ELEMENT
+    This is the root element - styles here apply to everything.
+*/
+html {
+    /* Set base font size - other sizes will be relative to this */
+    font-size: 16px;
+    /* Smooth scrolling when clicking links */
+    scroll-behavior: smooth;
+}
+
+/* 
+    BODY ELEMENT
+    This is the main container for all visible content.
+*/
+body {
+    /* 
+        Font family: What fonts to use
+        We list multiple options - browser uses first available.
+        'Segoe UI' is Windows, 'Roboto' is Android, 
+        sans-serif means any font without serifs (small decorative lines).
+    */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    /* Set text color to dark gray (almost black) */
+    color: #333;
+    
+    /* Set background color to light gray */
+    background-color: #f5f5f5;
+    
+    /* 
+        line-height: 1.6
+        Space between lines of text - makes text easier to read.
+        1.6 means 1.6 times the font size.
+    */
+    line-height: 1.6;
+    
+    /* Minimum height to fill the screen */
+    min-height: 100vh;
+    
+    /* 
+        display: flex
+        Makes body a flexbox container so we can arrange children.
+        flex-direction: column means stack children vertically.
+    */
+    display: flex;
+    flex-direction: column;
+}
+
+/* 
+    ========================================
+    PART 2: HEADER STYLES
+    ========================================
+    Styles for the top section of our page
+*/
+
+.header {
+    /* Background color - blue gradient */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    
+    /* Add padding (space inside) */
+    padding: 1.5rem 2rem;
+    
+    /* 
+        Add a shadow below the header
+        Syntax: horizontal-offset vertical-offset blur color
+    */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    
+    /* Center content horizontally */
+    text-align: center;
+}
+
+/* App title styling */
+.app-title {
+    /* Text color - white */
+    color: #fff;
+    
+    /* Font size - 2rem = 2 times the base font size (32px) */
+    font-size: 2rem;
+    
+    /* Font weight - makes text bold */
+    font-weight: bold;
+    
+    /* Space below the title */
+    margin-bottom: 1rem;
+}
+
+/* 
+    Navigation container
+    This holds all the navigation buttons.
+*/
+.navigation {
+    /* 
+        display: flex
+        Makes navigation a flexbox container.
+        justify-content: center centers items horizontally.
+        gap adds space between buttons.
+    */
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    
+    /* Wrap to next line if buttons don't fit */
+    flex-wrap: wrap;
+}
+
+/* Individual navigation button */
+.nav-button {
+    /* 
+        padding: vertical horizontal
+        Adds space inside the button.
+    */
+    padding: 0.5rem 1.5rem;
+    
+    /* Remove default button border */
+    border: none;
+    
+    /* Border radius - makes corners rounded */
+    border-radius: 5px;
+    
+    /* Background color - semi-transparent white */
+    background-color: rgba(255, 255, 255, 0.2);
+    
+    /* Text color - white */
+    color: #fff;
+    
+    /* Font size */
+    font-size: 1rem;
+    
+    /* Change cursor to pointer (hand icon) when hovering */
+    cursor: pointer;
+    
+    /* Smooth transition for hover effects */
+    transition: background-color 0.3s ease;
+}
+
+/* 
+    PSEUDO-CLASS: :hover
+    Styles applied when mouse hovers over the element.
+*/
+.nav-button:hover {
+    /* Darker background on hover */
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* 
+    PSEUDO-CLASS: .active
+    This class is added to the currently active button.
+*/
+.nav-button.active {
+    /* Solid white background for active button */
+    background-color: #fff;
+    /* Dark text color for active button */
+    color: #667eea;
+}
+
+/* 
+    ========================================
+    PART 3: MAIN CONTAINER
+    ========================================
+    Container that holds all the main content sections
+*/
+
+.container {
+    /* 
+        max-width: Limits how wide the container can be
+        This prevents content from stretching too wide on large screens.
+    */
+    max-width: 1200px;
+    
+    /* 
+        margin: vertical horizontal
+        Centers the container horizontally (auto on left/right).
+        Adds space above and below.
+    */
+    margin: 2rem auto;
+    
+    /* Padding - space inside the container */
+    padding: 0 1rem;
+    
+    /* 
+        flex: 1
+        Makes container grow to fill available space.
+    */
+    flex: 1;
+}
+
+/* 
+    ========================================
+    PART 4: CONTENT SECTIONS
+    ========================================
+    Styles for each main section (Income, Expenses, etc.)
+*/
+
+/* 
+    CONTENT SECTION
+    Each section (Income, Expenses, etc.) is a content-section.
+*/
+.content-section {
+    /* 
+        display: none
+        Hide all sections by default.
+        JavaScript will show the active one.
+    */
+    display: none;
+    
+    /* Animation for smooth fade-in */
+    animation: fadeIn 0.3s ease;
+}
+
+/* 
+    ACTIVE SECTION
+    The currently visible section has this class.
+*/
+.content-section.active {
+    /* Show this section */
+    display: block;
+}
+
+/* 
+    KEYFRAME ANIMATION
+    Creates a fade-in effect when sections appear.
+*/
+@keyframes fadeIn {
+    /* Start from invisible */
+    from {
+        opacity: 0;
+    }
+    /* End at fully visible */
+    to {
+        opacity: 1;
+    }
+}
+
+/* Section heading (h2) */
+.content-section h2 {
+    /* Font size */
+    font-size: 1.8rem;
+    
+    /* Color */
+    color: #667eea;
+    
+    /* Space below */
+    margin-bottom: 0.5rem;
+}
+
+/* Section description text */
+.section-description {
+    /* Font size */
+    font-size: 1rem;
+    
+    /* Color - lighter gray */
+    color: #666;
+    
+    /* Space below */
+    margin-bottom: 1.5rem;
+}
+
+/* 
+    ========================================
+    PART 5: CARD COMPONENT
+    ========================================
+    Cards are boxes that contain related content.
+    Like boxes on a shelf - each holds a group of items.
+*/
+
+.card {
+    /* White background */
+    background-color: #fff;
+    
+    /* Border radius - rounded corners */
+    border-radius: 10px;
+    
+    /* Padding - space inside */
+    padding: 1.5rem;
+    
+    /* 
+        Box shadow - adds depth
+        Creates a subtle shadow below the card.
+    */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    
+    /* Space below card */
+    margin-bottom: 1.5rem;
+}
+
+/* Card heading (h3) */
+.card h3 {
+    /* Font size */
+    font-size: 1.3rem;
+    
+    /* Color */
+    color: #333;
+    
+    /* Space below */
+    margin-bottom: 1rem;
+}
+
+/* 
+    ========================================
+    PART 6: FORM ELEMENTS
+    ========================================
+    Styles for input fields, buttons, labels, etc.
+*/
+
+/* 
+    FORM GROUP
+    Groups related form elements together.
+*/
+.form-group {
+    /* Space below each form group */
+    margin-bottom: 1rem;
+}
+
+/* Label styling */
+label {
+    /* Display as block (takes full width, stacks vertically) */
+    display: block;
+    
+    /* Font weight - slightly bold */
+    font-weight: 500;
+    
+    /* Space below label */
+    margin-bottom: 0.5rem;
+    
+    /* Color */
+    color: #333;
+}
+
+/* 
+    INPUT FIELDS
+    Styles for text boxes where users type.
+*/
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+    /* 
+        width: 100%
+        Makes input fill the entire width of its container.
+    */
+    width: 100%;
+    
+    /* Padding - space inside input */
+    padding: 0.75rem;
+    
+    /* Border - 1px solid gray */
+    border: 1px solid #ddd;
+    
+    /* Border radius - slightly rounded corners */
+    border-radius: 5px;
+    
+    /* Font size */
+    font-size: 1rem;
+    
+    /* Font family - inherit from parent */
+    font-family: inherit;
+    
+    /* 
+        transition
+        Smoothly animates changes (like border color when focused).
+    */
+    transition: border-color 0.3s ease;
+}
+
+/* 
+    INPUT FOCUS STATE
+    Styles when user clicks inside the input field.
+*/
+input:focus,
+select:focus {
+    /* Remove default browser outline */
+    outline: none;
+    
+    /* Change border color to blue */
+    border-color: #667eea;
+    
+    /* Add subtle shadow */
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Help text (small hints below inputs) */
+.help-text {
+    /* Smaller font */
+    font-size: 0.85rem;
+    
+    /* Lighter color */
+    color: #666;
+    
+    /* Space above */
+    margin-top: 0.25rem;
+    
+    /* Italic text */
+    font-style: italic;
+}
+
+/* 
+    ========================================
+    PART 7: BUTTONS
+    ========================================
+*/
+
+/* Primary button (main action buttons) */
+.button-primary {
+    /* Background color - blue */
+    background-color: #667eea;
+    
+    /* Text color - white */
+    color: #fff;
+    
+    /* Remove default border */
+    border: none;
+    
+    /* Padding */
+    padding: 0.75rem 1.5rem;
+    
+    /* Border radius */
+    border-radius: 5px;
+    
+    /* Font size */
+    font-size: 1rem;
+    
+    /* Font weight */
+    font-weight: 500;
+    
+    /* Cursor - pointer on hover */
+    cursor: pointer;
+    
+    /* Transition for smooth effects */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    
+    /* Space above */
+    margin-top: 0.5rem;
+}
+
+/* Button hover effect */
+.button-primary:hover {
+    /* Darker blue on hover */
+    background-color: #5568d3;
+    
+    /* Slightly lift the button */
+    transform: translateY(-2px);
+}
+
+/* Button active state (when clicked) */
+.button-primary:active {
+    /* Push button down */
+    transform: translateY(0);
+}
+
+/* Secondary button (for edit/delete actions) */
+.button-secondary {
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Danger button (for delete actions) */
+.button-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-danger:hover {
+    background-color: #c82333;
+}
+
+/* 
+    ========================================
+    PART 8: RESULTS BOX
+    ========================================
+    Container for displaying calculated results
+*/
+
+.results-box {
+    /* Light gray background */
+    background-color: #f8f9fa;
+    
+    /* Padding */
+    padding: 1rem;
+    
+    /* Border radius */
+    border-radius: 5px;
+    
+    /* Space above */
+    margin-top: 1rem;
+}
+
+/* Result item (individual result line) */
+.result-item {
+    /* 
+        display: flex
+        Makes items arrange horizontally.
+        justify-content: space-between pushes label and value to opposite ends.
+    */
+    display: flex;
+    justify-content: space-between;
+    
+    /* Padding */
+    padding: 0.5rem 0;
+    
+    /* Border bottom - separator line */
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Last result item - no border */
+.result-item:last-child {
+    border-bottom: none;
+}
+
+/* Result label (left side) */
+.result-label {
+    /* Font weight */
+    font-weight: 500;
+    /* Color */
+    color: #666;
+}
+
+/* Result value (right side) */
+.result-value {
+    /* Font weight - bold */
+    font-weight: bold;
+    /* Color - blue */
+    color: #667eea;
+    /* Larger font */
+    font-size: 1.1rem;
+}
+
+/* 
+    ========================================
+    PART 9: EXPENSES LIST
+    ========================================
+    Styles for displaying expenses in a table
+*/
+
+/* Expenses table */
+.expenses-table {
+    /* Full width */
+    width: 100%;
+    
+    /* Border collapse - merges table borders */
+    border-collapse: collapse;
+    
+    /* Space below */
+    margin-bottom: 1rem;
+}
+
+/* Table header */
+.expenses-table th {
+    /* Background color */
+    background-color: #f8f9fa;
+    
+    /* Padding */
+    padding: 0.75rem;
+    
+    /* Text alignment - left */
+    text-align: left;
+    
+    /* Font weight */
+    font-weight: 600;
+    
+    /* Border bottom */
+    border-bottom: 2px solid #dee2e6;
+}
+
+/* Table cells */
+.expenses-table td {
+    /* Padding */
+    padding: 0.75rem;
+    
+    /* Border bottom - separator */
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Table row hover */
+.expenses-table tr:hover {
+    /* Light gray background on hover */
+    background-color: #f8f9fa;
+}
+
+/* Empty message (shown when no data) */
+.empty-message {
+    /* Text alignment - center */
+    text-align: center;
+    
+    /* Color - gray */
+    color: #999;
+    
+    /* Padding */
+    padding: 2rem;
+    
+    /* Italic */
+    font-style: italic;
+}
+
+/* 
+    ========================================
+    PART 10: CALCULATOR TABS
+    ========================================
+    Tabs for switching between different calculators
+*/
+
+/* Calculator tabs container */
+.calculator-tabs {
+    /* 
+        display: flex
+        Arrange tabs horizontally.
+    */
+    display: flex;
+    
+    /* Wrap to next line if needed */
+    flex-wrap: wrap;
+    
+    /* Gap between tabs */
+    gap: 0.5rem;
+    
+    /* Space below */
+    margin-bottom: 1.5rem;
+}
+
+/* Individual calculator tab */
+.calc-tab {
+    /* Padding */
+    padding: 0.75rem 1.5rem;
+    
+    /* Border */
+    border: 2px solid #667eea;
+    
+    /* Background - white */
+    background-color: #fff;
+    
+    /* Text color - blue */
+    color: #667eea;
+    
+    /* Border radius */
+    border-radius: 5px;
+    
+    /* Font size */
+    font-size: 0.95rem;
+    
+    /* Cursor */
+    cursor: pointer;
+    
+    /* Transition */
+    transition: all 0.3s ease;
+}
+
+/* Tab hover */
+.calc-tab:hover {
+    /* Darker border on hover */
+    border-color: #5568d3;
+    /* Slightly darker text */
+    color: #5568d3;
+}
+
+/* Active tab */
+.calc-tab.active {
+    /* Blue background */
+    background-color: #667eea;
+    /* White text */
+    color: #fff;
+}
+
+/* Calculator content (the actual calculator form) */
+.calculator-content {
+    /* Hide by default */
+    display: none;
+}
+
+/* Active calculator content */
+.calculator-content.active {
+    /* Show this calculator */
+    display: block;
+}
+
+/* 
+    ========================================
+    PART 11: GOALS SECTION
+    ========================================
+*/
+
+/* Goals list container */
+#goals-list {
+    /* Space above */
+    margin-top: 1rem;
+}
+
+/* Individual goal item */
+.goal-item {
+    /* Background */
+    background-color: #f8f9fa;
+    
+    /* Padding */
+    padding: 1rem;
+    
+    /* Border radius */
+    border-radius: 5px;
+    
+    /* Space below */
+    margin-bottom: 1rem;
+    
+    /* Border */
+    border-left: 4px solid #667eea;
+}
+
+/* Goal header (name and actions) */
+.goal-header {
+    /* Flexbox layout */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    /* Space below */
+    margin-bottom: 0.5rem;
+}
+
+/* Goal name */
+.goal-name {
+    /* Font size */
+    font-size: 1.2rem;
+    
+    /* Font weight */
+    font-weight: 600;
+    
+    /* Color */
+    color: #333;
+}
+
+/* Goal details */
+.goal-details {
+    /* Color */
+    color: #666;
+    
+    /* Font size */
+    font-size: 0.9rem;
+    
+    /* Space below */
+    margin-bottom: 0.75rem;
+}
+
+/* 
+    PROGRESS BAR CONTAINER
+    The outer box that holds the progress bar.
+*/
+.progress-bar-container {
+    /* Background color - light gray */
+    background-color: #e0e0e0;
+    
+    /* Height */
+    height: 25px;
+    
+    /* Border radius - rounded */
+    border-radius: 12px;
+    
+    /* 
+        overflow: hidden
+        Hides parts of the inner bar that exceed the container.
+    */
+    overflow: hidden;
+    
+    /* Space below */
+    margin-bottom: 0.5rem;
+    
+    /* Position relative - for absolute positioning of inner bar */
+    position: relative;
+}
+
+/* 
+    PROGRESS BAR FILL
+    The inner bar that shows progress (fills from left to right).
+*/
+.progress-bar-fill {
+    /* Background color - green gradient */
+    background: linear-gradient(90deg, #28a745 0%, #20c997 100%);
+    
+    /* Height - same as container */
+    height: 100%;
+    
+    /* Start at 0% width - JavaScript will change this */
+    width: 0%;
+    
+    /* Transition - smooth animation when width changes */
+    transition: width 0.5s ease;
+    
+    /* Border radius */
+    border-radius: 12px;
+}
+
+/* Progress text (percentage) */
+.progress-text {
+    /* Position absolute - places text inside the progress bar */
+    position: absolute;
+    
+    /* Center vertically */
+    top: 50%;
+    /* Center horizontally */
+    left: 50%;
+    
+    /* Transform - moves text to center */
+    transform: translate(-50%, -50%);
+    
+    /* Font weight */
+    font-weight: 600;
+    
+    /* Font size */
+    font-size: 0.85rem;
+    
+    /* Color - white for visibility */
+    color: #fff;
+    
+    /* Text shadow - makes text more readable */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* 
+    ========================================
+    PART 12: CHARTS & VISUALIZATIONS
+    ========================================
+*/
+
+/* Chart container */
+.chart-container {
+    /* Padding */
+    padding: 1rem 0;
+}
+
+/* 
+    BAR CHART
+    Simple horizontal bar chart using CSS.
+*/
+.bar-chart {
+    /* Space between bars */
+    margin-bottom: 1rem;
+}
+
+/* Bar chart item (each bar) */
+.bar-chart-item {
+    /* Space below each bar */
+    margin-bottom: 1rem;
+}
+
+/* Bar label (Income, Expenses, etc.) */
+.bar-label {
+    /* Font weight */
+    font-weight: 500;
+    
+    /* Space below */
+    margin-bottom: 0.5rem;
+    
+    /* Color */
+    color: #333;
+}
+
+/* Bar wrapper (container for the bar) */
+.bar-wrapper {
+    /* 
+        position: relative
+        Allows us to position the value text absolutely within it.
+    */
+    position: relative;
+    
+    /* Height of the bar */
+    height: 30px;
+    
+    /* Background - light gray */
+    background-color: #e0e0e0;
+    
+    /* Border radius */
+    border-radius: 15px;
+    
+    /* 
+        overflow: hidden
+        Hides parts of the colored bar that exceed the wrapper.
+    */
+    overflow: hidden;
+}
+
+/* Actual bar (the colored part) */
+.bar {
+    /* Height - fills container */
+    height: 100%;
+    
+    /* Start at 0% width - JavaScript will change this */
+    width: 0%;
+    
+    /* Border radius */
+    border-radius: 15px;
+    
+    /* Transition - smooth animation */
+    transition: width 0.5s ease;
+}
+
+/* Income bar color */
+.income-bar {
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Expense bar color */
+.expense-bar {
+    background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
+}
+
+/* Savings bar color */
+.savings-bar {
+    background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+}
+
+/* Bar value (text showing amount) */
+.bar-value {
+    /* Position absolute - places text on top of bar */
+    position: absolute;
+    
+    /* Center vertically */
+    top: 50%;
+    
+    /* 10px from left edge */
+    left: 10px;
+    
+    /* Transform - center vertically */
+    transform: translateY(-50%);
+    
+    /* Font weight */
+    font-weight: 600;
+    
+    /* Font size */
+    font-size: 0.9rem;
+    
+    /* Color - white for visibility */
+    color: #fff;
+    
+    /* Text shadow */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* 
+    PIE CHART CONTAINER
+    Container for the pie chart and legend.
+*/
+.pie-chart-container {
+    /* 
+        display: flex
+        Arrange pie chart and legend side by side.
+    */
+    display: flex;
+    
+    /* Gap between chart and legend */
+    gap: 2rem;
+    
+    /* Space above */
+    margin-top: 2rem;
+    
+    /* Align items to center */
+    align-items: center;
+    
+    /* Wrap on small screens */
+    flex-wrap: wrap;
+}
+
+/* 
+    PIE CHART
+    Simple pie chart using CSS conic-gradient.
+    This creates a circle divided into colored sections.
+*/
+.pie-chart {
+    /* Width and height */
+    width: 200px;
+    height: 200px;
+    
+    /* Border radius - makes it a circle */
+    border-radius: 50%;
+    
+    /* 
+        Background will be set by JavaScript using conic-gradient.
+        Example: background: conic-gradient(#667eea 0% 30%, #f093fb 30% 60%, #4facfe 60% 100%);
+    */
+    /* Border - adds definition */
+    border: 3px solid #fff;
+    
+    /* Box shadow - adds depth */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Pie chart legend */
+.pie-legend {
+    /* 
+        display: flex
+        flex-direction: column
+        Stack legend items vertically.
+    */
+    display: flex;
+    flex-direction: column;
+    
+    /* Gap between items */
+    gap: 0.75rem;
+}
+
+/* Legend item */
+.legend-item {
+    /* Flexbox layout */
+    display: flex;
+    align-items: center;
+    
+    /* Gap between color box and label */
+    gap: 0.5rem;
+}
+
+/* Legend color box */
+.legend-color {
+    /* Width and height */
+    width: 20px;
+    height: 20px;
+    
+    /* Border radius - rounded */
+    border-radius: 3px;
+    
+    /* Border */
+    border: 1px solid #ddd;
+}
+
+/* Legend label */
+.legend-label {
+    /* Font size */
+    font-size: 0.9rem;
+    
+    /* Color */
+    color: #333;
+}
+
+/* Category breakdown list */
+.category-item {
+    /* Padding */
+    padding: 0.75rem;
+    
+    /* Border bottom */
+    border-bottom: 1px solid #e0e0e0;
+    
+    /* 
+        display: flex
+        Arrange category name and amount side by side.
+    */
+    display: flex;
+    justify-content: space-between;
+    
+    /* Align items vertically */
+    align-items: center;
+}
+
+/* Category name */
+.category-name {
+    /* Font weight */
+    font-weight: 500;
+    
+    /* Color */
+    color: #333;
+}
+
+/* Category amount */
+.category-amount {
+    /* Font weight */
+    font-weight: 600;
+    
+    /* Color */
+    color: #667eea;
+}
+
+/* 
+    ========================================
+    PART 13: FOOTER
+    ========================================
+*/
+
+.footer {
+    /* Background color */
+    background-color: #333;
+    
+    /* Text color */
+    color: #fff;
+    
+    /* Text alignment */
+    text-align: center;
+    
+    /* Padding */
+    padding: 1.5rem;
+    
+    /* Space above */
+    margin-top: 3rem;
+}
+
+.footer p {
+    /* Font size */
+    font-size: 0.9rem;
+    
+    /* Color */
+    color: #ccc;
+}
+
+/* 
+    ========================================
+    PART 14: RESPONSIVE DESIGN (MOBILE)
+    ========================================
+    Media queries - different styles for different screen sizes.
+    
+    MEDIA QUERY SYNTAX:
+    @media (max-width: 768px) {
+        /* Styles for screens smaller than 768px */
+    }
+*/
+
+/* 
+    TABLET & SMALL DESKTOP
+    For screens smaller than 992px (tablets, small laptops)
+*/
+@media (max-width: 992px) {
+    /* Make container narrower */
+    .container {
+        max-width: 90%;
+    }
+    
+    /* Reduce header padding */
+    .header {
+        padding: 1rem 1.5rem;
+    }
+    
+    /* Smaller app title */
+    .app-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* 
+    MOBILE DEVICES
+    For screens smaller than 768px (phones)
+*/
+@media (max-width: 768px) {
+    /* Even smaller container */
+    .container {
+        max-width: 95%;
+        padding: 0 0.5rem;
+    }
+    
+    /* Smaller header padding */
+    .header {
+        padding: 1rem;
+    }
+    
+    /* Smaller title */
+    .app-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    /* Stack navigation buttons vertically on very small screens */
+    .navigation {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    /* Full width navigation buttons */
+    .nav-button {
+        width: 100%;
+    }
+    
+    /* Smaller card padding */
+    .card {
+        padding: 1rem;
+    }
+    
+    /* Smaller headings */
+    .content-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    /* Smaller calculator tabs */
+    .calc-tab {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    /* Stack pie chart elements vertically */
+    .pie-chart-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Smaller pie chart on mobile */
+    .pie-chart {
+        width: 150px;
+        height: 150px;
+    }
+    
+    /* Make table scroll horizontally on mobile */
+    .expenses-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    /* Full width buttons on mobile */
+    .button-primary {
+        width: 100%;
+    }
+}
+
+/* 
+    SMALL MOBILE DEVICES
+    For screens smaller than 480px (very small phones)
+*/
+@media (max-width: 480px) {
+    /* Even smaller title */
+    .app-title {
+        font-size: 1.1rem;
+    }
+    
+    /* Even smaller padding */
+    .card {
+        padding: 0.75rem;
+    }
+    
+    /* Smaller font sizes */
+    .content-section h2 {
+        font-size: 1.3rem;
+    }
+    
+    .content-section h3 {
+        font-size: 1.1rem;
+    }
+    
+    /* Smaller inputs */
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    select {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Smaller buttons */
+    .button-primary {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* 
+    ========================================
+    PART 15: UTILITY CLASSES
+    ========================================
+    Reusable helper classes for common styling needs.
+*/
+
+/* Hide element */
+.hidden {
+    display: none !important;
+}
+
+/* Show element */
+.show {
+    display: block !important;
+}
+
+/* Text center */
+.text-center {
+    text-align: center;
+}
+
+/* Text bold */
+.text-bold {
+    font-weight: bold;
+}
+
+/* Success message styling (for notifications) */
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 0.75rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #28a745;
+}
+
+/* Error message styling */
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 0.75rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #dc3545;
+}
+
+/* 
+    ========================================
+    END OF STYLES
+    ========================================
+    That's all the CSS! Each style rule has been explained
+    so you can understand what it does and modify it if needed.
+*/
